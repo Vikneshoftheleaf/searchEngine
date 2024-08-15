@@ -23,12 +23,12 @@
     </section>
 
     <section >
-        <h1 class="lg:m-auto lg:w-1/2  text-xl font-semibold px-4 pt-4 pb-4">Showing Result for <span class="text-blue-500  ">{{query}}</span>
+        <h1 class="lg:m-auto lg:w-1/2 text-xl  px-4 pt-6 pb-4">Showing Result for <span class="text-blue-500  ">{{query}}</span>
         </h1>
 
         {%for obj in results:%}
 
-        <div class="lg:mx-auto px-4 py-6 flex flex-col gap-2 lg:w-1/2 bg-white shadow rounded-md">
+        <div class="lg:mx-auto px-4 py-6 flex flex-col gap-2 lg:w-1/2 bg-white">
             <div class="flex gap-2 items-center">
                 <div>
                     {% if obj.icon:%}
