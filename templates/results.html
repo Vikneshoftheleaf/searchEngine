@@ -9,8 +9,8 @@
 </head>
 
 <body>
-    <section class="sticky top-0 right-0 left-0 shadow bg-white">
-        <div class="lg:w-1/2 m-auto flex gap-4 items-center p-4">
+    <section class="lg:sticky top-0 right-0 left-0 shadow bg-white">
+        <div class="lg:w-1/2 m-auto flex flex-col lg:flex-row gap-4 items-center p-4">
             <div>
                 <h1 class="text-xl font-bold">Simsearch</h1>
             </div>
@@ -22,13 +22,13 @@
 
     </section>
 
-    <section class="p-4">
-        <h1 class="lg:m-auto lg:w-1/2  text-xl font-semibold px-4 pt-8 pb-4">Showing Result for <span class="text-blue-500  ">{{query}}</span>
+    <section class="p-4 bg-gray-100">
+        <h1 class="lg:m-auto lg:w-1/2  text-xl font-semibold px-4 pt-4 pb-4">Showing Result for <span class="text-blue-500  ">{{query}}</span>
         </h1>
 
         {%for obj in results:%}
 
-        <div class="lg:m-auto px-4 py-6 flex flex-col gap-2 border-b lg:w-1/2">
+        <div class="lg:mx-auto my-4 px-4 py-6 flex flex-col gap-2 lg:w-1/2 bg-white shadow rounded-md">
             <div class="flex gap-2 items-center">
                 <div>
                     {% if obj.icon:%}
@@ -45,7 +45,7 @@
     
             </div>
             <div>
-                <a href={{obj.url}} class="text-xl text-blue-500 hover:underline">{{obj.title | truncate(100)}}</a>
+                <a href={{obj.url}} class="text-2xl text-blue-500 hover:underline">{{obj.title | truncate(100)}}</a>
                 <p class="text-base font-light">{{obj.meta_description | truncate(150)}}</p>
     
             </div>
