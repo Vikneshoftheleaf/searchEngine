@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{query}}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <section class="sticky top-0 right-0 left-0 shadow bg-white">
+        <div class="lg:w-1/2 m-auto flex gap-4 items-center p-4">
+            <div>
+                <h1 class="text-xl font-bold">Simsearch</h1>
+            </div>
+            <form action="search" method="get" class="w-full">
+                <input name="q" type="text" placeholder="Search" class="focus:outline-none w-full px-4 py-2 border-2  rounded-full shadow-sm"
+                    value={{query}}>
+            </form>
+        </div>
+
+    </section>
+
+    <section class="p-4">
+        <h1 class="lg:m-auto lg:w-1/2  text-xl font-semibold px-4 pt-8 pb-4">Showing Result for <span class="text-blue-500  ">{{query}}</span>
+        </h1>
+
+        {%for obj in results:%}
+
+        <div class="lg:m-auto px-4 py-6 flex flex-col gap-2 border-b lg:w-1/2">
+            <div class="flex gap-2 items-center">
+                <div>
+                    {% if obj.icon:%}
+                    <img src={{obj.icon}} alt="website-icon" class="h-10 w-10 border rounded-full p-2">
+                    {%else:%}
+                    <img src="/static/default-favicon.png" alt="website-icon" class="h-10 w-10 border rounded-full p-2">
+                    {%endif%}
+                </div>
+    
+                <div class="flex flex-col gap-0">
+                    <p class="capitalize">{{obj.domain}}</p>
+                    <a href={{obj.url}} class="text-xs font-light">{{obj.url | truncate(40)}}</a>
+                </div>
+    
+            </div>
+            <div>
+                <a href={{obj.url}} class="text-xl text-blue-500 hover:underline">{{obj.title | truncate(100)}}</a>
+                <p class="text-base font-light">{{obj.meta_description | truncate(150)}}</p>
+    
+            </div>
+        </div>
+    
+        {%endfor%}
+
+    </section>
+
+</body>
+
+</html>
