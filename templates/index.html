@@ -1,16 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SimSearch</title>
+    <title>Sigmaz</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/067fc88846.js" crossorigin="anonymous"></script>
 </head>
-<body class="h-screen w-screen flex gap-4 flex-col justify-center items-center">
-    <h1 class="text-6xl font-bold text-center">SimSearch</h1>
-    <form action="search" method="get">
-        <input name="q" type="text" placeholder="Search" class="p-2 border-2  rounded-md" value="">
-        <button type="submit" class="px-4 py-2 bg-purple-500 text-slate-50 font-semibold rounded-md ">Go</button>
-    </form>
+
+<body class="h-screen flex flex-col gap-4 items-center">
+
+    <section class="m-auto lg:w-1/2 p-4">
+        <a href="/"></a>
+        <form action="search" method="get" class="flex flex-col gap-4 items-center w-full">
+            <div class="px-6 py-4 border-2 shadow rounded-full flex gap-4 items-center w-full">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input name="q" type="text" placeholder="Search" class="focus:outline-none  w-full" value="" autofocus>
+                <button type="reset" class="flex gap-2 items-center"><i class="fa-solid fa-x"></i></button>
+
+            </div>
+        </form>
+
+    </section>
+    <section>
+        <h1 class="p-4 text-center mx-auto lg:text-4xl text-2xl font-semibold">Trending <span class="text-blue-500">Right Now</span></h1>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:p-12 p-4">
+            {% for article in articles[:10] %}
+            <div class="flex flex-col gap-2 rounded-md shadow  p-6">
+                {% if article.urlToImage:%}
+                <img src={{article.urlToImage}} alt="website-icon"
+                    class="lg:h-[300px] lg:w-[750px] aspect-video object-cover border rounded-md">
+                {%else:%}
+                <img src="/static/default-favicon.png" alt="website-icon" class="aspect-video border rounded-full p-2">
+                {%endif%}
+                <div class="flex justify-between items-center">
+                    <p>{{article.source.name}}</p>
+                </div>
+                <div>
+                    <h2 class="text-xl font-semibold"><a href="{{ article.url }}" target="_blank">{{ article.title | truncate(100) }}</a></h2>
+                    <p class="lg:block hidden font-light">{{article.description | truncate(150)}}</p>
+                </div>
+                
+            </div>
+            {% endfor %}
+
+
+        </div>
+
+
+    </section>
 </body>
+
 </html>

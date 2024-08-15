@@ -1,13 +1,26 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,jsonify
 from index import search_index
-
+import requests
 app = Flask(__name__)
 
 
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    url = 'https://saurav.tech/NewsAPI/top-headlines/category/health/in.json'
+    
+    try:
+        # Fetch JSON data from the URL
+        response = requests.get(url)
+        
+        # Check if the request was successful
+        if response.status_code == 200:
+            # Parse JSON data
+            data = response.json()
+    except Exception as e:
+        # Handle any exceptions
+        return jsonify({"error": str(e)}), 500
+    return render_template('index.html', articles=data['articles'])
 
 @app.route('/search')
 def search():
