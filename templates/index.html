@@ -13,14 +13,14 @@
 <body class="h-screen flex flex-col gap-4 items-center">
    
 
-    <section class="m-auto lg:w-1/2 p-4 flex flex-col gap-4 justify-center items-center">
+    <section class="m-auto lg:w-1/2 p-4 flex flex-col gap-4 justify-center items-center relative">
         <a href="/" class="my-4">
             <img src="/static/geine-crop.png" alt="logo" class="h-[100px] w-[350px] lg:w-[550px] lg:h-[150px] object-contain">
         </a>
         <form action="search" method="get" class="flex flex-col gap-4 items-center w-full">
-            <div class="px-6 py-4 border shadow rounded-full flex gap-4 items-center w-full">
+            <div class="px-6 py-4 border shadow-md shadow-grap-500/50 rounded-full flex gap-4 items-center w-full">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input id="search" name="q" type="text" placeholder="Search" class="focus:outline-none  w-full" value="" autofocus>
+                <input id="search" name="q" type="text" placeholder="Search the web" class="focus:outline-none placeholder-gray-600 w-full" value="" autofocus>
                 <button type="reset" class="flex gap-2 items-center"><i class="fa-solid fa-x"></i></button>
 
             </div>
