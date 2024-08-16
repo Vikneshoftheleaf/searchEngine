@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request,jsonify
-from index import search_index
+from index import search_index, autocomplete
 import requests
+import json
 app = Flask(__name__)
 
-
+with open('crawled_data.json', 'r') as file:
+    data = json.load(file)
 
 @app.route('/')
 def index():
@@ -24,13 +26,18 @@ def index():
 
 @app.route('/search')
 def search():
-    query = request.args.get('q')
+    query = request.args.get('q','')
 
     # Perform the search
     results = search_index(query)
 
     # Render the results in a template
     return render_template('results.html', query=query, results=results)
+
+@app.route('/autocomplete', methods=['GET'])
+def listit():
+     query = request.args.get('q', '')
+     return autocomplete(query)
 
 if __name__ == "__main__":
     app.run(debug=True)

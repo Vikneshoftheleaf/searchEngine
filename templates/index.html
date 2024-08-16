@@ -4,23 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sigmaz</title>
+    <title>Giene</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/067fc88846.js" crossorigin="anonymous"></script>
+    <script src="/static/script.js" defer></script>
 </head>
 
 <body class="h-screen flex flex-col gap-4 items-center">
+   
 
-    <section class="m-auto lg:w-1/2 p-4">
-        <a href="/"></a>
+    <section class="m-auto lg:w-1/2 p-4 flex flex-col gap-4 justify-center items-center">
+        <a href="/" class="my-4">
+            <img src="/static/geine-crop.png" alt="logo" class="h-[100px] w-[350px] lg:w-[550px] lg:h-[150px] object-contain">
+        </a>
         <form action="search" method="get" class="flex flex-col gap-4 items-center w-full">
-            <div class="px-6 py-4 border-2 shadow rounded-full flex gap-4 items-center w-full">
+            <div class="px-6 py-4 border shadow rounded-full flex gap-4 items-center w-full">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input name="q" type="text" placeholder="Search" class="focus:outline-none  w-full" value="" autofocus>
+                <input id="search" name="q" type="text" placeholder="Search" class="focus:outline-none  w-full" value="" autofocus>
                 <button type="reset" class="flex gap-2 items-center"><i class="fa-solid fa-x"></i></button>
 
             </div>
         </form>
+        <div id="suggestions" class="w-full"></div>
 
     </section>
     <section>
@@ -50,6 +55,8 @@
 
 
     </section>
+
+       
 </body>
 
 </html>

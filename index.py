@@ -1,5 +1,6 @@
 import json
 from collections import defaultdict
+from flask import jsonify
 
 # Step 1: Load JSON data from a file
 def load_json(file_path):
@@ -38,6 +39,24 @@ def search_index(query):
         if item and query.lower() in item.lower():
             results.append(data[i])
     return results
+
+
+
+def autocomplete(q):
+    query = q
+    
+    if not isinstance(query, str):
+        query = ''
+    
+    query = query.lower()
+    
+    if not query:
+        return jsonify([])
+    
+    # Handle missing keys and values
+    suggestions = [item['title'] for item in data if 'title' in item and item['title'] and query in item['title'].lower()]
+    
+    return jsonify(suggestions[:5])
 
 # Step 4: Example usage
 
