@@ -9,6 +9,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/static//script.js" defer></script>
+    <link rel="shortcut icon" href="/static//favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -20,7 +21,7 @@
                 </a>
             </div>
             <form action="search" method="get" class="w-full relative">
-                <div class="px-6 py-4 border shadow-md shadow-grap-500/50 rounded-full flex gap-4 items-center w-full">
+                <div class="px-6 py-3 border shadow-md shadow-grap-500/50 rounded-full flex gap-4 items-center w-full">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input id="search" name="q" type="text" placeholder="Search" class= "focus:outline-none placeholder-gray-600 w-full" value="{{ query }}">
                     <button type="reset" class="flex gap-2 items-center"><i class="fa-solid fa-x"></i></button>
@@ -40,25 +41,34 @@
 
         {%for obj in results:%}
 
-        <div class="lg:mx-auto px-4 py-6 flex flex-col gap-2 lg:w-1/2 bg-white">
+        <div class="lg:mx-auto px-5 py-5 flex flex-col gap-1 lg:w-1/2 bg-white">
             <div class="flex gap-2 items-center">
                 <div>
-                    {% if obj.icon:%}
-                    <img src={{obj.icon}} alt="website-icon" class="h-10 w-10 border rounded-full p-2">
+                    {% if obj.favicon:%}
+                    <img src={{obj.favicon}} alt="website-icon" class="h-10 w-10 border rounded-full p-1.5">
                     {%else:%}
                     <img src="/static/default-favicon.png" alt="website-icon" class="h-10 w-10 border rounded-full p-2">
                     {%endif%}
                 </div>
     
-                <div class="flex flex-col gap-0">
-                    <p class="capitalize">{{obj.domain}}</p>
-                    <a href={{obj.url}} class="text-xs font-light">{{obj.url | truncate(40)}}</a>
+                <div class="flex flex-col leading-[18px]">
+                    <p class="capitalize text-[15px]">{{obj.domain}}</p>
+                    <a href={{obj.url}} class="text-[12.40px]">{{obj.url | truncate(40)}}</a>
                 </div>
     
             </div>
-            <div>
-                <a href={{obj.url}} class="text-2xl text-blue-500 hover:underline">{{obj.title | truncate(100)}}</a>
-                <p class="text-base font-light">{{obj.meta_description | truncate(150)}}</p>
+            <div class="flex gap-4 w-full justify-between">
+                <div class="">
+                    <a href={{obj.url}} class="text-blue-500 hover:underline text-[22px] font-meium">{{obj.title | truncate(100)}}</a>
+                    <p class="text-[14.20px] ">{{obj.meta_description | truncate(150)}}</p>
+    
+                </div>
+                <div class="">
+                    {% if obj.first_image and 'http' in obj.first_image:%}
+                    <img src={{obj.first_image}} alt="page-image" class="h-24 w-24  rounded-md object-cover border">
+                    {%endif%}
+
+                </div>
     
             </div>
         </div>

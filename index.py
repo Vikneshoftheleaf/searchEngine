@@ -61,7 +61,7 @@ def autocomplete(q):
 # Step 4: Example usage
 
 # File path to the JSON file
-file_path = "crawled_data.json"  # Replace with your file path
+file_path = "visited_urls.json"  # Replace with your file path
 
 # Load the JSON data
 data = load_json(file_path)
