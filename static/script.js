@@ -23,7 +23,7 @@ searchField.addEventListener('input', function () {
                             //document.getElementById('search').value = term;
                             suggestionsContainer.style.display = 'none';
                         };
-                        item.innerHTML = (term.length > 60)?'<i class="fa-solid fa-magnifying-glass mr-2"></i>' + term.slice(0,60)+"...":'<i class="fa-solid fa-magnifying-glass mr-2"></i>'+term;
+                        item.innerHTML = (term.length > 60) ? '<i class="fa-solid fa-magnifying-glass mr-2"></i>' + term.slice(0, 60) + "..." : '<i class="fa-solid fa-magnifying-glass mr-2"></i>' + term;
                         suggestionsContainer.appendChild(item);
                     });
                 } else {
@@ -55,30 +55,29 @@ clearBtn.addEventListener('click',()=>{
 */
 
 
-function validateImageUrls() {
-    // Loop through each image element with the 'data-url' attribute
-    document.querySelectorAll('img[data-url]').forEach(function (img) {
 
-        const imageUrl = img.getAttribute('data-url');
-        const mode = img.getAttribute('data-src');
-        // Create a new Image object to check if the URL is valid
-        var tempImage = new Image();
-        tempImage.onload = function () {
-            img.src = imageUrl;  // Set the src if the image loads successfully
-        };
-        tempImage.onerror = function () {
-            if (mode == "fav") {
-                img.src = '/static/default-favicon.png'  // Remove the image element if the URL is invalid
-            }
-            else {
-                img.remove()
-            }
-        };
-        tempImage.src = imageUrl;  // Set the src to trigger the load/error events
-    });
-}
+// Loop through each image element with the 'data-url' attribute
+document.querySelectorAll('img[data-url]').forEach(function (img) {
 
-window.onload = validateImageUrls;
+    const imageUrl = img.getAttribute('data-url');
+    const mode = img.getAttribute('data-src');
+    // Create a new Image object to check if the URL is valid
+    var tempImage = new Image();
+    tempImage.onload = function () {
+        img.src = imageUrl;  // Set the src if the image loads successfully
+    };
+    tempImage.onerror = function () {
+        if (mode == "fav") {
+            img.src = '/static/default-favicon.png'  // Remove the image element if the URL is invalid
+        }
+        else {
+            img.remove()
+        }
+    };
+    tempImage.src = imageUrl;  // Set the src to trigger the load/error events
+});
+
+
 
 
 
