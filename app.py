@@ -29,7 +29,7 @@ def search():
     query = request.args.get('q','')
 
     # Perform the search
-    results = search_index(query)
+    results = search_index(query)[:10]
 
     # Render the results in a template
     return render_template('results.html', query=query, results=results)

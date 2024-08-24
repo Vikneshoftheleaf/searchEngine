@@ -21,7 +21,7 @@
                 </a>
             </div>
             <form action="search" method="get" class="w-full relative">
-                <div class="px-6 py-3 border shadow-md shadow-grap-500/50 rounded-full flex gap-4 items-center w-full">
+                <div class="px-6 py-3 border shadow-md shadow-gray-500/10 rounded-full flex gap-4 items-center w-full">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input id="search" name="q" type="text" placeholder="Search" class= "focus:outline-none placeholder-gray-600 w-full" value="{{ query }}">
                     <!--<button id="clearBtn" class="flex gap-2 items-center"><i class="fa-solid fa-x"></i></button>-->
@@ -45,7 +45,7 @@
             <div class="flex gap-2 items-center">
                 <div>
                     {% if obj.favicon:%}
-                    <img src={{obj.favicon}} alt="website-icon" class="h-10 w-10 border rounded-full p-1.5">
+                    <img id="favicon" data-url={{obj.favicon}} data-src="fav" alt="website-icon" class="h-10 w-10 border rounded-full p-1.5">
                     {%else:%}
                     <img src="/static/default-favicon.png" alt="website-icon" class="h-10 w-10 border rounded-full p-2">
                     {%endif%}
@@ -65,7 +65,7 @@
                 </div>
                 <div class="">
                     {% if obj.first_image and 'http' in obj.first_image:%}
-                    <img src={{obj.first_image}} alt="page-image" class="h-24 w-24  rounded-md object-cover border">
+                    <img data-src="pre" data-url={{obj.first_image}} alt="page-image" class="h-24 w-24  rounded-md object-cover border">
                     {%endif%}
 
                 </div>
