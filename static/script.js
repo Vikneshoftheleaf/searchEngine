@@ -23,7 +23,7 @@ searchField.addEventListener('input', function () {
                             //document.getElementById('search').value = term;
                             suggestionsContainer.style.display = 'none';
                         };
-                        item.innerHTML = '<i class="fa-solid fa-magnifying-glass mr-2"></i>' + term;
+                        item.innerHTML = (term.length > 60)?'<i class="fa-solid fa-magnifying-glass mr-2"></i>' + term.slice(0,60)+"...":'<i class="fa-solid fa-magnifying-glass mr-2"></i>'+term;
                         suggestionsContainer.appendChild(item);
                     });
                 } else {
