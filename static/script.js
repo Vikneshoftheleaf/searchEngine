@@ -36,3 +36,14 @@ document.addEventListener('click', function(event) {
         suggestionsContainer.style.display = 'none';
     }
 });
+
+
+/*
+var searchField  = document.getElementById("search")
+var clearBtn  = document.getElementById("clearBtn")
+
+clearBtn.addEventListener('click',()=>{
+    searchField.r
+})
+
+*/
